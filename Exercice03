@@ -76,3 +76,19 @@ public class Employé {
         System.out.println("Salaire : ["+salaire+"]");
     }
 }
+public class Main {
+    public static void main(String[] args) {
+
+        System.out.println("=== Création de l'employé ===");
+        Employé emp = new Employé();
+
+        System.out.println("\n=== Informations avant augmentation ===");
+        emp.AfficherInformation();
+
+        System.out.println("\n=== Application de l'augmentation de salaire ===");
+        emp.AugmentationSalaire();
+
+        System.out.println("\n=== Informations après augmentation ===");
+        emp.AfficherInformation();
+    }
+}
