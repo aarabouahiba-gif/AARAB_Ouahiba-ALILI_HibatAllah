@@ -1,0 +1,108 @@
+public class Client {
+    private String CIN;
+    private String nom;
+    private String prenom;
+    private int telephone;
+    public Client(String CIN,String nom,String prenom, int telephone){
+        this.CIN=CIN;
+        this.nom=nom;
+        this.prenom=prenom;
+        this.telephone=telephone;
+    }
+    public Client(){
+
+    }
+    public void Afficher(){
+        Systm.out.println("Les informations du client sont :"
+        "CIN:"+CIN
+        "Nom:"+nom
+        "Prenom:"+prenom
+        "Telephone:"+telephone
+        )
+    }
+}
+//class compte
+public class Compte{
+    private double solde;
+    private int code;
+    private Client proprietaire;
+
+    public Compte(Client proprietaire) {
+        c++;
+        this.code = c;
+        this.proprietaire = proprietaire;
+        this.solde = 0;
+    }
+
+    public Client getProprietaire() {
+        return proprietaire;
+    }
+
+    public double getSolde() {
+        return solde;
+    }
+
+    public int getCode() {
+        return code;
+    }
+
+    public void setProprietaire(Client proprietaire) {
+        this.proprietaire = proprietaire;
+    }
+    // Crediter
+    public void Crediter(double somme) {
+        solde += somme;
+    }
+    public void Crediter(double somme , Compte c){
+            this.debiter(somme);
+            c.crediter(somme);
+    }
+    public void Debiter(double somme){
+        solde-=somme;
+    }
+    public void Debiter(double somme,Compte c) {
+        this.debiter(somme);
+        c.Debiter(somme);
+    }
+    public void afficherResume() {
+
+            System.out.println("Code compte : " + code+
+                               "Solde : " + solde+
+                               "Proprietaire : "
+                             + proprietaire.getNom() + " "
+                               + proprietaire.getPrenom());
+        }
+    public static void NombreDesComptes() {
+        System.out.println("Nombre de comptes crees : " + c);
+    }
+
+    }
+public class TestCompte {
+
+    public static void main(String[] args) {
+
+        Client C1 = new Client("N12349", "AARAB", "Ouahiba", "06837637");
+        Client C2 = new Client("N23489, "AARAB", "Noura", "063559387"");
+
+        CompteCP1 = new Compte(C1);
+        CompteCP2 = new Compte(C2);
+
+        CP1.crediter(705460);
+        CP2.crediter(9000);
+
+        CP1.debiter(200);
+
+        CP2.crediter(300, CP1);
+
+        System.out.println("Compte 1");
+        CP1.afficherResume();
+
+        System.out.println("Compte 2");
+        CP2.afficherResume();
+        
+
+        Compte.NombreDesComptes();
+    }
+}
+
+
