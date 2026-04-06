@@ -1,0 +1,28 @@
+public class Etudiant {
+    private String Nom;
+    private double [] semestre1;
+    private double [] semestre2;
+    private double moyenne;
+    private String resultat;
+
+    public Etudiant( String Nom, double[] semestre1, double[] semestre2, double moyenne, String resultat){
+        this.Nom=Nom;
+        this.semestre1 = new double[8];
+        this.semestre2 = new double[8];
+        this.moyenne = moyenne;
+        this.resultat = resultat;
+    }
+    public void Moyenne(){
+       double s=0;
+       for (int i=0 ;i<8;i++){
+           s+=semestre1[i];
+       }
+       moyenne=s/8;
+       if(moyenne<12){
+           resultat="Non admis";
+       }
+       else{
+           resultat="Admis";
+       }
+    }
+}
