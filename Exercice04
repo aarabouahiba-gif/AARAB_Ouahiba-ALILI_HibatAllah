@@ -1,0 +1,84 @@
+public class Article{
+    private String reference;
+    private String designation ;
+    private double prixHT;
+    //private double tauxTVA;
+    private static double tauxTVA = 40;
+    public Article(){
+
+    }
+    public Article(String r, String d , double p,double t){
+        reference=r;
+        designation=d;
+        prixHT =p;
+        tauxTVA=t;
+    }
+
+    public Article(String R, String D){
+        reference=R;
+        designation=D;
+    }
+    public Article (Article A){
+        this.reference= A.reference;
+        this.designation=A.designation;
+        this.prixHT= A.prixHT ;
+        this.tauxTVA= A.tauxTVA  ;
+    }
+    public double CalculerPrixTTC(){
+        double PrixTTC=  prixHT +(prixHT*(tauxTVA/100));
+         return PrixTTC;
+    }
+    public void AfficherArticle(){
+        System.out.println("les informations de cet article est : /n" +"Reference:"+reference+"/n"+"Designation:"+designation+"/n"+"prixHT:"+prixHT+"tauxTVA:"+tauxTVA);
+    }
+    //modification au niveau de class pour derniere question
+    public Article(String r, String d , double p){
+        reference=r;
+        designation=d;
+        prixHT =p;
+    }
+    public static void setTauxTVA(double t) {
+        tauxTVA = t;
+    }
+}
+ public class TestArticle{
+    public static void main(String[] args){
+        Article A1=new Article();
+        System.out.println("Article 1 :");
+        A1.AfficherArticle();
+        Article A2 = new Article("N100", "PC", 7050, 40);
+        System.out.println("Article 2 :");
+        A2.AfficherArticle();
+        System.out.println("Prix TTC : " + A2.CalculerPrixTTC());
+        Article A3 = new Article("N23", "Souris");
+        System.out.println("Article 3 :");
+        A3.AfficherArticle();
+        Article A4 = new Article(A2);
+        System.out.println("Article 4 (identique a Article 2) :");
+        A4.AfficherArticle();
+        System.out.println("Prix TTC : " + A4.CalculerPrixTTC());
+
+    }
+ }
+public class TestArticle1 {
+
+    public static void main(String[] args) {
+
+        Article A1 = new Article("N100", "PC", 7050);
+        Article A2 = new Article("A02", "Souris", 200);
+
+        A1.AfficherArticle();
+        System.out.println("Prix TTC = " + A1.CalculerPrixTTC());
+
+        A2.AfficherArticle();
+        System.out.println("Prix TTC = " + A2.CalculerPrixTTC());
+
+        // changer la TVA
+        Article.setTauxTVA(18);
+
+        System.out.println("Apres modification de la TVA");
+
+        System.out.println("Prix TTC article 1 = " + A1.CalculerPrixTTC());
+        System.out.println("Prix TTC article 2 = " + A2.CalculerPrixTTC());
+    }
+}
