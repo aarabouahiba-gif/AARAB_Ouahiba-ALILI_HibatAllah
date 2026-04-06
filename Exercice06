@@ -1,0 +1,36 @@
+public class Personne {
+    private String prenom;
+    private String nom;
+    private String mail;
+    public Personne(){
+       }
+    public Personne(String prenom,String nom,String mail){
+      this.prenom=prenom;
+      this.nom=nom;
+      this.mail=mail;
+}
+
+    public String getMail() {
+        return mail;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+    public String getNom() {
+        return nom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+}
