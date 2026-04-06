@@ -1,0 +1,78 @@
+import java.time.LocalDate;
+import java.time.Period;
+
+public class Employé {
+    private String matricule;
+    private String nom;
+    private String prenom;
+    private double salaire;
+    private DateFormat dateNaissance;
+    private DateFormat dateEmbauche;
+
+    public String getMatricule(){
+        return matricule;
+    }
+    public String getNom() {
+        return nom;
+    }
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+    public String getPrenom(){
+        return prenom;
+    }
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+    public void setSalaire(double salaire){
+        this.salaire=salaire;
+    }
+    public DateFormat getDateNaissance() {
+        return dateNaissance;
+    }
+    public DateFormat getDateEmbauche() {
+        return dateEmbauche;
+    }
+
+    public Employé(String matricule, String nom, String prenom, double salaire, DateFormat dateNaissance, DateFormat dateEmbauche){
+        this.matricule=matricule;
+        this.nom=nom;
+        this.prenom=prenom;
+        this.salaire=salaire;
+        this.dateNaissance=dateNaissance;
+        this.dateEmbauche=dateEmbauche;
+    }
+
+    public void Age(LocalDate dateNaissance){
+        LocalDate dateActuelle= LocalDate.now();
+        int age= Period.between(dateNaissance,dateActuelle).getYears();
+    }
+
+    public int Anciennete( DateFormat dateEmbauche){
+        LocalDate dateActuelle=LocalDate.now();
+        int anciennete = Period.between(dateEmbauche,dateActuelle).getYears();
+        return anciennete;
+    }
+
+    public void AugmentationSalaire(){
+        int anciennete= Anciennete(this.dateEmbauche);
+        if (anciennete < 5 ){
+            salaire += salaire*0.02;
+        }
+        else if (anciennete < 10){
+            salaire += salaire*0.05;
+        }
+        else{
+            salaire += salaire*0.1;
+        }
+    }
+
+    public void AfficherInformation(){
+        System.out.println("Matricule : ["+matricule+"]");
+        System.out.println("Nom : ["+nom+"]");
+        System.out.println("Prénom : ["+prenom+"]");
+        System.out.println("Date de naissance : ["+dateNaissance+"]");
+        System.out.println("Date d'embauche : ["+dateEmbauche+"]");
+        System.out.println("Salaire : ["+salaire+"]");
+    }
+}
